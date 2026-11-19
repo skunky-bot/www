@@ -2,7 +2,7 @@
 # Do not expose these services or use example credentials in production.
 services:
   skunky-api:
-    build: ../api
+    build: ../../api
     environment:
       DATABASE_URL: sqlite:////tmp/skunky-preview.db
       SECRET_KEY: ${SKUNKY_JWT_SECRET:?Set a strong random signing key}
@@ -17,14 +17,14 @@ services:
       - "127.0.0.1:8001:8000"
     depends_on: [search, scan, collect]
   search:
-    build: ../search
+    build: ../../search
     environment:
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
   scan:
-    build: ../scan
+    build: ../../scan
     environment:
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
   collect:
-    build: ../collect
+    build: ../../collect
     environment:
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
