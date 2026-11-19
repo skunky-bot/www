@@ -1,0 +1,82 @@
+name: Skunky Cross-Repo Integration
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  pipeline-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SKUNKY_JWT_SECRET: ci-preview-signing-secret-is-never-used-outside-ci
+      SKUNKY_ADMIN_USERNAME: ciadmin
+      SKUNKY_ADMIN_PASSWORD: ci-only-preview-admin-password-strong
+      SKUNKY_ADMIN_EMAIL: ci-admin@example.com
+      SKUNKY_SERVICE_TOKEN: ci-preview-shared-internal-token-not-for-production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: www
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: skunky-bot/api
+          path: api
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: skunky-bot/search
+          path: search
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: skunky-bot/scan
+          path: scan
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: skunky-bot/collect
+          path: collect
+          persist-credentials: false
+
+      - name: Build and boot isolated preview stack
+        run: docker compose -f www/infra/docker-compose.skunky-preview.yml up --build -d
+
+      - name: Verify real service-to-service preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 45); do
+            if curl -fsS http://127.0.0.1:8001/healthz >/dev/null; then break; fi
+            sleep 2
+          done
+          curl -fsS http://127.0.0.1:8001/healthz | jq -e '.status=="ok"'
+          TOKEN="$(curl -fsS -X POST http://127.0.0.1:8001/auth/login \
+            --data-urlencode "username=$SKUNKY_ADMIN_USERNAME" \
+            --data-urlencode "password=$SKUNKY_ADMIN_PASSWORD" | jq -r '.access_token')"
+          test -n "$TOKEN"
+          PAYLOAD="$(jq -nc --arg html '<a href="mailto:info@example.com">Contact</a>' \
+            '{query:"demo",source_id:"example-docs",source_url:"https://example.com/",html:$html,region:"ZA"}')"
+          RESULT="$(curl -fsS -X POST http://127.0.0.1:8001/pipeline/preview \
+            -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+            --data "$PAYLOAD")"
+          echo "$RESULT" | jq -e '
+            .mode=="preview" and
+            .result.emails == ["info@example.com"] and
+            .result.outreach_allowed == false and
+            .result.persisted == false and
+            .network_fetched == false
+          '
+
+      - name: Diagnose failures
+        if: failure()
+        run: docker compose -f www/infra/docker-compose.skunky-preview.yml logs --tail=80
+
+      - name: Stop preview services
+        if: always()
+        run: docker compose -f www/infra/docker-compose.skunky-preview.yml down -v --remove-orphans
