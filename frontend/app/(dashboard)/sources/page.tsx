@@ -9,6 +9,8 @@ import {
   CircleDashed,
   Clock3,
   Database,
+  Download,
+  Info,
   ExternalLink,
   Eye,
   Filter,
@@ -853,7 +855,7 @@ export default function SourcesPage() {
                 <p className="text-sm font-semibold text-white">Recommended next backend model</p>
                 <p className="mt-1 text-sm leading-7 text-slate-300">
                   Add a `sources` table plus a source-health ledger and a join table to `jobs`,
-                  then expose `/api/sources`, `/api/sources/{id}`, and `/api/sources/{id}/jobs`.
+                  then expose API endpoints for listing sources, individual source details, and linked jobs.
                 </p>
               </div>
             </div>
