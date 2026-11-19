@@ -135,6 +135,11 @@ function buildSidebarSections(): AppSidebarSection[] {
       defaultOpen: true,
       items: [
         {
+          label: "Pipeline Preview",
+          href: "/pipeline",
+          description: "Skunky source lookup, extraction and normalization (development)",
+        },
+        {
           label: "Sources",
           href: "/sources",
           description: "Targets, discovery, and source visibility",
