@@ -113,9 +113,7 @@ type JobRecord = {
 };
 
 type PageProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 const APP_NAME =
@@ -131,7 +129,8 @@ const APP_ENV =
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const jobId = decodeURIComponent(params.id);
+  const { id } = await params;
+  const jobId = decodeURIComponent(id);
 
   return {
     title: `Job ${jobId}`,
@@ -742,8 +741,9 @@ function buildPayloadPreview(job: JobRecord) {
   );
 }
 
-export default function JobDetailPage({ params }: PageProps) {
-  const job = buildJob(decodeURIComponent(params.id));
+export default async function JobDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  const job = buildJob(decodeURIComponent(id));
   const status = statusMeta(job.status);
   const StatusIcon = status.icon;
   const payloadPreview = buildPayloadPreview(job);
