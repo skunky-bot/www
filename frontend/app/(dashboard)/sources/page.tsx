@@ -321,6 +321,9 @@ export default function SourcesPage() {
 
   return (
     <div className="space-y-6">
+      <div role="status" className="rounded-xl border border-amber-300/35 bg-amber-300/10 px-4 py-3 text-sm text-amber-100">
+        <strong className="mr-2">Demo data:</strong>The source inventory and health metrics below are illustrative UI fixtures, not a live registry or verified crawl status.
+      </div>
       <section className="surface-card hero-gradient bg-noise p-5 sm:p-6 lg:p-8">
         <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
           <div className="min-w-0 max-w-4xl">
