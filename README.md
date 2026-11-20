@@ -4,9 +4,27 @@ This repository is the **public application** entrypoint of the [Skunky platform
 
 **Canonical architecture:** [ADR-0001](docs/architecture/ADR-0001-skunky-platform.md) · **Integration test:** [.github/workflows/skunky-integration.yml](.github/workflows/skunky-integration.yml).
 
-Current status: the separately built `frontend/` Next.js console and sibling `api/search/scan/collect` services have a tested **development preview** path. The GitHub Pages deployment only publishes the root `index.html` static site; it does **not** publish the Next.js dashboard or deploy the new API/worker containers. Live crawling, production persistence, CRM export and public authentication rollout remain separate release gates.
+The Next.js console includes a [Web Collector](#web-collector) for one-time and recurring scans. GitHub Pages publishes the static marketing site. Run the console, API and worker on a runtime that supports long-lived processes.
 
 The legacy `backend/` FastAPI/Celery/Redis/PostgreSQL stack is preserved for a controlled transition, not silently replaced. Cloud deployment choice remains undecided.
+
+## Web Collector
+
+Open `/collector` in the Next.js console and sign in with a SkunkScrape operator account. Enter keywords, a source limit, and the country code used to interpret local phone numbers. **One-time scan** runs once. **Continuous** runs immediately and repeats at the selected interval. Pausing retains existing contacts and resuming schedules an immediate scan. Contacts are deduplicated per collection and include the URL where they were first seen.
+
+For a local run, check out `skunky-bot/www`, `skunky-bot/api`, `skunky-bot/search`, `skunky-bot/scan` and `skunky-bot/collect` into sibling directories. Set `SKUNKY_JWT_SECRET`, `SKUNKY_ADMIN_USERNAME`, `SKUNKY_ADMIN_PASSWORD`, `SKUNKY_ADMIN_EMAIL` and `SKUNKY_SERVICE_TOKEN` in your local environment. Point `SKUNKY_SOURCE_REGISTRY_FILE` at an absolute path to a reviewed registry. The [API documentation](https://github.com/skunky-bot/api#web-collector) shows the source entry format.
+
+From the `www` repository:
+
+```bash
+export SKUNKY_COLLECTOR_ENABLED=true
+docker compose -f infra/docker-compose.skunky-preview.yml --profile collector up --build -d
+cd frontend
+npm install
+NEXT_PUBLIC_SKUNKY_API_BASE_URL=http://127.0.0.1:8001 npm run dev
+```
+
+Open `http://localhost:3000/collector`. The API and one worker share the SQLite volume `skunky-state`. The bundled registry has a preview fixture, so configure reviewed entries before starting live scans. Keep the API and worker running for unattended collection.
 
 ---
 
