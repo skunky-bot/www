@@ -135,6 +135,11 @@ function buildSidebarSections(): AppSidebarSection[] {
       defaultOpen: true,
       items: [
         {
+          label: "Web Collector",
+          href: "/collector",
+          description: "Run one-time scans or schedule continuous collection",
+        },
+        {
           label: "Pipeline Preview",
           href: "/pipeline",
           description: "Skunky source lookup, extraction and normalization (development)",
@@ -296,6 +301,7 @@ export default function DashboardLayout({
                   </div>
 
                   <div className="mt-3 flex flex-wrap gap-2">
+                    <Link href="/collector" className="btn-secondary btn-sm">Web Collector</Link>
                     <Link href="/jobs/new" className="btn-primary btn-sm">
                       <Plus className="h-4 w-4" />
                       <span>New Job</span>
@@ -312,6 +318,7 @@ export default function DashboardLayout({
               <AppHeader
                 description="Shared application shell for queued scraping, operational visibility, exports, and platform administration."
                 navItems={[
+                  { label: "Web Collector", href: "/collector" },
                   { label: "Jobs", href: "/jobs" },
                   { label: "New Job", href: "/jobs/new", exact: true },
                   { label: "Sources", href: "/sources" },

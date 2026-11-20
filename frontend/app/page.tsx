@@ -204,10 +204,10 @@ export default function HomePage() {
                 Console
               </Link>
               <Link
-                href="/jobs/new"
+                href="/collector"
                 className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:opacity-90"
               >
-                New Job
+                Web Collector
               </Link>
             </nav>
           </div>
@@ -241,10 +241,10 @@ export default function HomePage() {
                 </Link>
 
                 <Link
-                  href="/jobs/new"
+                  href="/collector"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:border-sky-400/40 hover:bg-white/10"
                 >
-                  Create New Job
+                  Open Web Collector
                   <Workflow className="h-4 w-4" />
                 </Link>
               </div>
