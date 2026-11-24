@@ -11,10 +11,10 @@ def test_version_bump_script_has_expected_markers():
     content = script.read_text(encoding="utf-8")
 
     expected_terms = [
-        "SkunkScrape Version Bump",
+        "Skunky Version Bump",
         "pyproject.toml",
-        "skunkscrape\\__init__.py",
-        "skunkscrape\\plugins\\manifest.json",
+        "skunky\\__init__.py",
+        "skunky\\plugins\\manifest.json",
         "CHANGELOG.md",
         "semantic format like 2.2.1",
         "Version bump completed successfully.",

@@ -25,7 +25,7 @@ def test_run_plugin_includes_all_smart_contact_crawler_options(monkeypatch):
     assert captured["cmd"] == [
         "python",
         "-m",
-        "skunkscrape.plugins.smart_contact_crawler",
+        "skunky.plugins.smart_contact_crawler",
         "--url",
         "https://example.com",
         "--depth",
@@ -113,7 +113,7 @@ def test_run_plugin_non_crawler_still_gets_shared_options(monkeypatch):
     assert captured["cmd"] == [
         "python",
         "-m",
-        "skunkscrape.plugins.some_other_plugin",
+        "skunky.plugins.some_other_plugin",
         "--url",
         "https://example.com",
         "--to-webhook",

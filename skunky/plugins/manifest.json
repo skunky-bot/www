@@ -1,8 +1,8 @@
 {
   "app": {
-    "name": "SkunkScrape",
+    "name": "Skunky",
     "version": "2.2.1",
-    "description": "Plugin manifest for the SkunkScrape GUI launcher and CLI orchestrator."
+    "description": "Plugin manifest for the Skunky GUI launcher and CLI orchestrator."
   },
   "categories": {
     "lead_generation": {

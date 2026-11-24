@@ -6,11 +6,11 @@
 
 ## Context
 
-Existing repositories represent overlapping SkunkScrape versions: the `www` repository has a Next.js frontend and a separate FastAPI/Celery/PostgreSQL/Redis backend, the `api` repository has another FastAPI control-plane scaffold, `studio` has Python CLI/Tkinter tools, and `SkunkScrapeCodex` proposes a Firebase/GCP pipeline. Deleting or silently replacing these systems risks lost functionality.
+Existing repositories represent overlapping Skunky versions: the `www` repository has a Next.js frontend and a separate FastAPI/Celery/PostgreSQL/Redis backend, the `api` repository has another FastAPI control-plane scaffold, `studio` has Python CLI/Tkinter tools, and `SkunkyCodex` proposes a Firebase/GCP pipeline. Deleting or silently replacing these systems risks lost functionality.
 
 ## Decision
 
-Define **Skunky** as platform family; **SkunkScrape** is a supported product.
+Use **Skunky** as the single platform and product name across the public application, discovery tools and services.
 
 - `www`: canonical public UI. Existing Next.js app is preserved.
 - `api`: *target* control-plane/API contract, authenticated orchestration. The legacy `www/backend` remains untouched until a tested migration.
@@ -20,7 +20,7 @@ Define **Skunky** as platform family; **SkunkScrape** is a supported product.
 - `sources`: canonical schema and allowlist metadata. In V1, services use synchronized fixtures; introduce a published registry artifact as the contract matures.
 - `chat`: conversation UX and authenticated, tool-bounded application integration, not an autonomous internet actor.
 - `studio`: operator console and legacy local Python tools.
-- `skunkscrape-integrations`: approved, opt-in outbound adapters with consent/purpose enforcement.
+- `skunky-integrations`: approved, opt-in outbound adapters with consent/purpose enforcement.
 - `.github`: contribution policy and organization overview.
 
 ## V1 API contract

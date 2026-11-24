@@ -1,12 +1,12 @@
 ﻿"""
-SkunkScrape plugin package.
+Skunky plugin package.
 
 This package contains runnable scraper and enrichment plugins used by:
 - main.py (CLI orchestrator)
 - main_gui.py (desktop launcher)
 
 Each plugin should expose a CLI-style entry point so it can be executed with:
-    python -m skunkscrape.plugins.<plugin_name>
+    python -m skunky.plugins.<plugin_name>
 
 Recommended plugin conventions:
 - accept --url when applicable

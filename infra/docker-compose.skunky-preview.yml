@@ -3,8 +3,8 @@
 services:
   skunky-api:
     build: ../../api
-    environment:
-      DATABASE_URL: sqlite:////tmp/skunky-preview.db
+    environment: &api-environment
+      DATABASE_URL: sqlite:////var/lib/skunky/skunky-preview.db
       SECRET_KEY: ${SKUNKY_JWT_SECRET:?Set a strong random signing key}
       BOOTSTRAP_ADMIN_USERNAME: ${SKUNKY_ADMIN_USERNAME:?Set bootstrap administrator}
       BOOTSTRAP_ADMIN_PASSWORD: ${SKUNKY_ADMIN_PASSWORD:?Set unique administrator password}
@@ -13,18 +13,56 @@ services:
       SKUNKY_SCAN_URL: http://scan:8000
       SKUNKY_COLLECT_URL: http://collect:8000
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
+      SKUNKY_COLLECTOR_ENABLED: ${SKUNKY_COLLECTOR_ENABLED:-false}
+    volumes: &state-volume
+      - skunky-state:/var/lib/skunky
     ports:
       - "127.0.0.1:8001:8000"
     depends_on: [search, scan, collect]
+    networks: [default, pipeline]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  collector-worker:
+    profiles: [collector]
+    build: ../../api
+    command: [python, -m, app.services.collector_worker]
+    environment: *api-environment
+    volumes: *state-volume
+    networks: [default, pipeline]
+    depends_on:
+      skunky-api:
+        condition: service_healthy
+    restart: unless-stopped
   search:
     build: ../../search
+    networks: [pipeline]
     environment:
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
+      SKUNKY_SOURCE_REGISTRY_PATH: /registry/sources.json
+    volumes:
+      - type: bind
+        source: ${SKUNKY_SOURCE_REGISTRY_FILE:-../../search/registry.json}
+        target: /registry/sources.json
+        read_only: true
+        bind:
+          create_host_path: false
   scan:
     build: ../../scan
+    networks: [pipeline]
     environment:
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
   collect:
     build: ../../collect
+    networks: [pipeline]
     environment:
       SKUNKY_SERVICE_TOKEN: ${SKUNKY_SERVICE_TOKEN:?Required}
+
+networks:
+  pipeline:
+    internal: true
+
+volumes:
+  skunky-state:

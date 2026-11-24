@@ -97,17 +97,17 @@ function getBaseUrl() {
   const raw =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
     process.env.SITE_URL?.trim() ||
-    "https://skunkscrape.com";
+    "https://skunky.net";
 
   try {
     return new URL(raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`);
   } catch {
-    return new URL("https://skunkscrape.com");
+    return new URL("https://skunky.net");
   }
 }
 
 function getBrandName() {
-  return process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+  return process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 }
 
 function titleCase(input: string) {
@@ -693,7 +693,7 @@ export function AppSidebar({
   mobileOpen = false,
   onMobileOpenChange,
   defaultCollapsed = false,
-  storageKey = "skunkscrape:sidebar:collapsed",
+  storageKey = "skunky:sidebar:collapsed",
   className,
 }: AppSidebarProps) {
   const pathname = usePathname() || "/";

@@ -71,7 +71,7 @@ def test_run_plugin_builds_smart_contact_crawler_command(monkeypatch):
     assert captured["cmd"] == [
         "python",
         "-m",
-        "skunkscrape.plugins.smart_contact_crawler",
+        "skunky.plugins.smart_contact_crawler",
         "--url",
         "https://example.com",
         "--depth",

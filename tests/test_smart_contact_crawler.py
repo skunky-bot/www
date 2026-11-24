@@ -1,4 +1,4 @@
-from skunkscrape.plugins.smart_contact_crawler import (
+from skunky.plugins.smart_contact_crawler import (
     SmartContactCrawler,
     canonicalize_url,
     same_domain,
@@ -16,8 +16,8 @@ def test_canonicalize_url_removes_fragment_and_tracking_query():
 
 
 def test_canonicalize_url_keeps_non_tracking_query_parameters():
-    url = "https://example.com/search/?q=skunkscrape&utm_medium=email&page=2"
-    assert canonicalize_url(url) == "https://example.com/search?page=2&q=skunkscrape"
+    url = "https://example.com/search/?q=skunky&utm_medium=email&page=2"
+    assert canonicalize_url(url) == "https://example.com/search?page=2&q=skunky"
 
 
 def test_same_domain_ignores_www_and_scheme():

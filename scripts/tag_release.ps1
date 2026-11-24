@@ -17,7 +17,7 @@ function Fail($Text) {
 }
 
 Write-Host ""
-Write-Host "=== SkunkScrape Release Tagging ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Release Tagging ===" -ForegroundColor Cyan
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     Fail "Git is not available on PATH."

@@ -78,10 +78,10 @@ type FormState = {
 };
 
 const APP_NAME =
-  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunkscrape.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunky.net";
 
 const APP_ENV =
   process.env.NEXT_PUBLIC_APP_ENV?.trim() ||
@@ -556,6 +556,9 @@ export default function NewJobPage() {
 
   return (
     <div className="space-y-6">
+      <div role="status" className="rounded-xl border border-amber-300/35 bg-amber-300/10 px-4 py-3 text-sm text-amber-100">
+        <strong className="mr-2">Development interface:</strong>This form is a UI prototype. Do not assume submitting or testing here schedules an actual scraping job, contacts remote targets, or persists production records.
+      </div>
       <section className="surface-card hero-gradient bg-noise p-5 sm:p-6 lg:p-8">
         <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
           <div className="min-w-0 max-w-4xl">
@@ -1194,7 +1197,7 @@ export default function NewJobPage() {
                     <input
                       id="webhook-url"
                       className="input"
-                      placeholder="https://hooks.example.com/skunkscrape"
+                      placeholder="https://hooks.example.com/skunky"
                       value={state.webhookUrl}
                       onChange={(event) => onFieldChange("webhookUrl", event.target.value)}
                     />

@@ -71,12 +71,12 @@ function getBaseUrl() {
   const raw =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
     process.env.SITE_URL?.trim() ||
-    "https://skunkscrape.com";
+    "https://skunky.net";
 
   try {
     return new URL(raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`);
   } catch {
-    return new URL("https://skunkscrape.com");
+    return new URL("https://skunky.net");
   }
 }
 
@@ -215,7 +215,7 @@ export function AppHeader({
   const resolvedBrandName =
     brandName?.trim() ||
     process.env.NEXT_PUBLIC_APP_NAME?.trim() ||
-    "SkunkScrape Web Console";
+    "Skunky Web Console";
 
   const resolvedEnvLabel = environmentLabel?.trim() || inferEnvironmentLabel();
   const resolvedEnvTone = environmentTone || inferEnvironmentTone(resolvedEnvLabel);
@@ -226,7 +226,7 @@ export function AppHeader({
   const resolvedTitle = title?.trim() || inferTitleFromPath(pathname);
   const resolvedDescription =
     description?.trim() ||
-    "Manage jobs, monitor platform activity, and move through the SkunkScrape control plane with confidence.";
+    "Manage jobs, monitor platform activity, and move through the Skunky control plane with confidence.";
 
   const statusClasses = statusToneClasses(statusTone);
 

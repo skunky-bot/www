@@ -1,5 +1,5 @@
 """
-SkunkScrape core package.
+Skunky core package.
 """
 
 __all__ = [

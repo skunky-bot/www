@@ -6,7 +6,7 @@ param(
 
     [int]$TargetLeads = 100,
 
-    [string]$ProxyFile = "C:\Users\Raydo\OneDrive\Apps\SkunkScrape\data\proxies\Webshare 10 proxies.txt",
+    [string]$ProxyFile = "C:\Users\Raydo\OneDrive\Apps\Skunky\data\proxies\Webshare 10 proxies.txt",
 
     [switch]$ToWebhook,
 
@@ -18,7 +18,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "=== SkunkScrape Crawler Runner ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Crawler Runner ===" -ForegroundColor Cyan
 Write-Host "URL:          $Url" -ForegroundColor Yellow
 Write-Host "Depth:        $Depth" -ForegroundColor Yellow
 Write-Host "Target Leads: $TargetLeads" -ForegroundColor Yellow
