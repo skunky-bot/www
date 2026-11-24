@@ -23,3 +23,7 @@ This directory is an **isolated design preview**. It does **not** change the exi
 - The documented authenticated Web Collector is a Next.js runtime, not hosted by GitHub Pages.
 - The approved production runtime/domain remains undecided. Do not change the repo CNAME or advertise running scans until an independent runtime and policy review is complete.
 - To open a static preview locally, serve this folder with any static file server and visit index.html.
+
+## Brand dependency
+
+The preview vendors the upstream v1.0.0 tokens.css and components.css from skunkworks-africa/brand. Update both together from a reviewed upstream revision; do not duplicate semantic definitions in product CSS. Theme preference uses the origin-local skw-brand-theme key with legacy fallback. No domain or runtime changes in this PR.

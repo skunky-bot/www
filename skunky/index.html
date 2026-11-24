@@ -10,7 +10,9 @@
   <meta name="robots" content="noindex,nofollow">
   <link rel="icon" href="./skunky-avatar.svg" type="image/svg+xml">
   <!-- Canonical, versioned semantic tokens from the Skunkworks Group design system. -->
-  <link rel="stylesheet" href="https://brand.skunkworks.africa/tokens.css">
+  <script src="./theme-init.js"></script>
+  <link rel="stylesheet" href="./tokens.css">
+  <link rel="stylesheet" href="./components.css">
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./app.js"></script>
 </head>
@@ -35,8 +37,8 @@
         <button class="icon-button theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
         </button>
-        <a class="header-secondary" href="https://github.com/skunky-bot/www" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-        <a class="button button-primary header-cta" href="#start">Get started <span aria-hidden="true">→</span></a>
+        <details class="header-dropdown"><summary>Resources</summary><div><a href="https://github.com/skunky-bot/www">GitHub repository</a><a href="https://brand.skunkworks.africa/">Brand system</a></div></details><details class="header-dropdown"><summary>Skunkworks</summary><div><a href="https://www.skunkworks.africa/">Skunkworks Africa</a><a href="https://store.skunkworks.africa/">Store</a><a href="https://www.skunkworksacademy.com/">Academy</a></div></details>
+        <a class="sk-button button button-primary header-cta" href="#start">Get started <span aria-hidden="true">→</span></a>
       </div>
     </div>
     <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
@@ -46,9 +48,13 @@
       <a href="#start">Get started</a>
       <a href="https://github.com/skunky-bot/www#web-collector">Documentation ↗</a>
       <a href="https://github.com/skunky-bot/www">GitHub ↗</a>
+      <a href="https://brand.skunkworks.africa/">Brand system ↗</a>
+      <a href="https://www.skunkworks.africa/">Skunkworks Africa ↗</a>
+      <a href="https://store.skunkworks.africa/">Store ↗</a>
+      <a href="https://www.skunkworksacademy.com/">Academy ↗</a>
     </nav>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
       <div class="ambient ambient-left" aria-hidden="true"></div>
       <div class="ambient ambient-right" aria-hidden="true"></div>
@@ -74,8 +80,8 @@
             <p class="hero-lead">Make the web work for you.</p>
             <p class="hero-description">Discover sources, configure one-time scans, and explore continuous collection workflows with a companion designed to turn research into action.</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#start">Explore a scan <span aria-hidden="true">→</span></a>
-              <a class="button button-outlined" href="#platform">Explore platform <span aria-hidden="true">↗</span></a>
+              <a class="sk-button button button-primary" href="#start">Explore a scan <span aria-hidden="true">→</span></a>
+              <a class="sk-button secondary button button-outlined" href="#platform">Explore platform <span aria-hidden="true">↗</span></a>
             </div>
             <div class="feature-right">
               <a class="small-capability" href="#platform"><span aria-hidden="true">◈</span> Structured results</a>
@@ -89,7 +95,7 @@
             <label class="sr-only" for="scan-query">Describe your search</label>
             <span class="prompt-sparkle" aria-hidden="true">✳</span>
             <input id="scan-query" type="text" maxlength="160" name="query" placeholder="What would you like Skunky to find?" autocomplete="off" required>
-            <button class="button button-primary prompt-button" type="submit">Prepare search <span aria-hidden="true">→</span></button>
+            <button class="sk-button button button-primary prompt-button" type="submit">Prepare search <span aria-hidden="true">→</span></button>
           </form>
           <fieldset class="scan-modes">
             <legend>Choose a collection mode</legend>
