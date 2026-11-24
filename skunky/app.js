@@ -7,7 +7,7 @@
   var form = document.getElementById("scan-form");
   var result = document.getElementById("prepared-result");
   var summary = document.getElementById("prepared-summary");
-  var key = "skunky-colour-theme";
+  var key = "skw-brand-theme";
 
   function currentTheme() {
     var explicit = root.getAttribute("data-theme");
@@ -20,7 +20,7 @@
     toggle.setAttribute("title", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
   }
   try {
-    var saved = window.localStorage.getItem(key);
+    var saved = window.localStorage.getItem(key) || window.localStorage.getItem("skunky-colour-theme");
     if (saved === "dark" || saved === "light") setTheme(saved);
   } catch (_) { /* local preference storage may be blocked */ }
   toggle.setAttribute("aria-label", currentTheme() === "dark" ? "Switch to light theme" : "Switch to dark theme");
@@ -48,6 +48,7 @@
   });
   document.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && !mobile.hidden) closeMenu(true);
+    if (event.key === "Escape") document.querySelectorAll(".header-dropdown[open]").forEach(function (d) { d.open = false; d.querySelector("summary").focus(); });
   });
   window.addEventListener("resize", function () {
     if (window.innerWidth > 890 && !mobile.hidden) closeMenu(false);
