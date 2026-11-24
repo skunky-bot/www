@@ -117,10 +117,10 @@ type PageProps = {
 };
 
 const APP_NAME =
-  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunkscrape.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunky.net";
 
 const APP_ENV =
   process.env.NEXT_PUBLIC_APP_ENV?.trim() ||
@@ -135,7 +135,7 @@ export async function generateMetadata({
   return {
     title: `Job ${jobId}`,
     description:
-      "Detailed execution view for a SkunkScrape job, including progress, logs, exports, configuration, and operational diagnostics.",
+      "Detailed execution view for a Skunky job, including progress, logs, exports, configuration, and operational diagnostics.",
   };
 }
 
@@ -308,7 +308,7 @@ function buildJob(id: string): JobRecord {
     includeTerms: ["contact", "phone", "whatsapp", "call", "quote"],
     excludeTerms: ["spam", "franchise-only", "job seeker"],
     webhookEnabled: true,
-    webhookUrl: "https://hooks.example.com/skunkscrape/jobs",
+    webhookUrl: "https://hooks.example.com/skunky/jobs",
     exportCsv: true,
     exportJson: true,
     exportXlsx: true,

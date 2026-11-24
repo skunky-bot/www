@@ -1,6 +1,6 @@
 # Skunky.net responsive homepage preview
 
-This directory is an **isolated design preview**. It does **not** change the existing SkunkScrape site or the active GitHub Pages CNAME, currently skunkscrape.com.
+This directory is an **isolated design preview**. It does **not** change the existing Skunky site or the active GitHub Pages CNAME, currently skunky.net.
 
 ## Design source
 

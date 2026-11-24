@@ -23,7 +23,7 @@ function Success($Text) {
 }
 
 Write-Host ""
-Write-Host "=== SkunkScrape Version Bump ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Version Bump ===" -ForegroundColor Cyan
 
 $normalizedVersion = $Version.Trim()
 if ([string]::IsNullOrWhiteSpace($normalizedVersion)) {
@@ -43,8 +43,8 @@ if ([string]::IsNullOrWhiteSpace($ReleaseDate)) {
 }
 
 $pyprojectPath = ".\pyproject.toml"
-$initPath = ".\skunkscrape\__init__.py"
-$manifestPath = ".\skunkscrape\plugins\manifest.json"
+$initPath = ".\skunky\__init__.py"
+$manifestPath = ".\skunky\plugins\manifest.json"
 $changelogPath = ".\CHANGELOG.md"
 
 $required = @($pyprojectPath, $initPath, $manifestPath)
@@ -80,16 +80,16 @@ else {
     Success "Updated pyproject.toml"
 }
 
-# Update skunkscrape\__init__.py
-Info "[2/4] Updating skunkscrape\__init__.py"
+# Update skunky\__init__.py
+Info "[2/4] Updating skunky\__init__.py"
 $initContent = Get-Content $initPath -Raw
 $initMatch = [regex]::Match($initContent, '(?m)^__version__\s*=\s*"([^"]+)"')
 if (-not $initMatch.Success) {
-    Fail "Could not find __version__ in skunkscrape\__init__.py"
+    Fail "Could not find __version__ in skunky\__init__.py"
 }
 $currentInitVersion = $initMatch.Groups[1].Value
 if ($currentInitVersion -eq $normalizedVersion) {
-    Info "skunkscrape\__init__.py already set to $normalizedVersion"
+    Info "skunky\__init__.py already set to $normalizedVersion"
 }
 else {
     $initUpdated = [regex]::Replace(
@@ -99,11 +99,11 @@ else {
         1
     )
     [System.IO.File]::WriteAllText((Resolve-Path $initPath), $initUpdated, (New-Object System.Text.UTF8Encoding($false)))
-    Success "Updated skunkscrape\__init__.py"
+    Success "Updated skunky\__init__.py"
 }
 
 # Update manifest.json using Python to preserve readable formatting
-Info "[3/4] Updating skunkscrape\plugins\manifest.json"
+Info "[3/4] Updating skunky\plugins\manifest.json"
 python -c "import json, pathlib; p = pathlib.Path(r'$manifestPath'); data = json.loads(p.read_text(encoding='utf-8-sig')); data.setdefault('app', {}); data['app']['version'] = '$normalizedVersion'; p.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')"
 if ($LASTEXITCODE -ne 0) {
     Fail "Failed to update manifest.json"

@@ -10,7 +10,7 @@ export function Nav() {
   return (
     <nav className="flex items-center justify-between border-b border-line px-6 py-4">
       <Link href="/" className="text-lg font-semibold tracking-tight">
-        SkunkScrape
+        Skunky
       </Link>
       <div className="flex gap-4 text-sm text-slate-300">
         {links.map((link) => (

@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "=== SkunkScrape Repo Status ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Repo Status ===" -ForegroundColor Cyan
 
 # Python
 Write-Host ""
@@ -19,8 +19,8 @@ $paths = @(
     ".\main.py",
     ".\pyproject.toml",
     ".\README.md",
-    ".\skunkscrape",
-    ".\skunkscrape\plugins\manifest.json",
+    ".\skunky",
+    ".\skunky\plugins\manifest.json",
     ".\tests",
     ".\scripts"
 )

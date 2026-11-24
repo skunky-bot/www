@@ -8,21 +8,21 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION?.trim() ||
-  "Production-grade SkunkScrape web console for queued scraping, operational monitoring, result inspection, and export workflows.";
+  "Production-grade Skunky web console for queued scraping, operational monitoring, result inspection, and export workflows.";
 
 function getBaseUrl(): URL {
   const raw =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
     process.env.SITE_URL?.trim() ||
-    "https://skunkscrape.com";
+    "https://skunky.net";
 
   try {
     return new URL(raw.startsWith("http://") || raw.startsWith("https://") ? raw : `https://${raw}`);
   } catch {
-    return new URL("https://skunkscrape.com");
+    return new URL("https://skunky.net");
   }
 }
 
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   generator: "Next.js",
   category: "technology",
   keywords: [
-    "SkunkScrape",
+    "Skunky",
     "scraping platform",
     "scrape orchestration",
     "lead generation",
@@ -114,7 +114,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "SkunkScrape",
+    name: "Skunky",
     url: baseUrl.toString(),
     description: APP_DESCRIPTION,
     brand: APP_NAME,

@@ -26,7 +26,7 @@ function getSiteUrl() {
   const raw =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
     process.env.SITE_URL?.trim() ||
-    "https://skunkscrape.com";
+    "https://skunky.net";
 
   try {
     return new URL(
@@ -35,7 +35,7 @@ function getSiteUrl() {
         : `https://${raw}`,
     );
   } catch {
-    return new URL("https://skunkscrape.com");
+    return new URL("https://skunky.net");
   }
 }
 
@@ -222,7 +222,7 @@ export default function DashboardLayout({
 
   const siteUrl = React.useMemo(() => getSiteUrl(), []);
   const appName =
-    process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+    process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
   const environmentLabel = getEnvironmentLabel();
   const environmentTone = getEnvironmentTone(environmentLabel);
 
@@ -252,7 +252,7 @@ export default function DashboardLayout({
             onMobileOpenChange={setMobileSidebarOpen}
             brandName={appName}
             brandHref="/"
-            workspaceLabel="SkunkScrape Control Plane"
+            workspaceLabel="Skunky Control Plane"
             workspaceSubLabel={siteUrl.host}
             statusLabel={platformStatus}
             statusTone={platformStatusTone}
@@ -267,7 +267,7 @@ export default function DashboardLayout({
               role: "Operations Console",
               email:
                 process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim() ||
-                "ops@skunkscrape.com",
+                "ops@skunky.net",
               href: "/profile",
             }}
           />
@@ -470,7 +470,7 @@ export default function DashboardLayout({
                 <div className="mt-4 border-t border-white/10 pt-4 text-xs text-slate-500">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <p>
-                      SkunkScrape dashboard shell is ready for pages like{" "}
+                      Skunky dashboard shell is ready for pages like{" "}
                       <span className="text-slate-300">/jobs</span>,{" "}
                       <span className="text-slate-300">/jobs/new</span>,{" "}
                       <span className="text-slate-300">/sources</span>, and{" "}

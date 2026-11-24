@@ -5,12 +5,12 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "=== SkunkScrape Artifact Cleanup ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Artifact Cleanup ===" -ForegroundColor Cyan
 
 $paths = @(
     ".\__pycache__",
     ".\.pytest_cache",
-    ".\skunkscrape.egg-info",
+    ".\skunky.egg-info",
     ".\build",
     ".\dist"
 )

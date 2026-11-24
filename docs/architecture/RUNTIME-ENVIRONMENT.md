@@ -16,7 +16,7 @@
 | Optional collection worker | `api/app/services/collector_worker.py` | Separate background process. **Disabled by default** pending independent network-fetch and privacy review. |
 | Legacy runtime | `www/backend`, `studio` | Preserve existing FastAPI/Celery/PostgreSQL/Redis and Python/Tk tools until a migration ADR, parity tests and rollback approval. |
 | Conversational client | `chat` | Current rule-based static preview; future model calls and secrets must remain server-side. |
-| Outbound integrations | `skunkscrape-integrations` | Currently payload preparation only; no outbound transmission without explicit approval and policy checks. |
+| Outbound integrations | `skunky-integrations` | Currently payload preparation only; no outbound transmission without explicit approval and policy checks. |
 
 ## Runtime decision pending ADR-0002
 

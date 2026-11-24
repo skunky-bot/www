@@ -15,8 +15,8 @@ The format is loosely based on Keep a Changelog and the project currently follow
 ## [2.2.0] - 2026-03-21
 
 ### Added
-- Added `skunkscrape` Python package scaffold.
-- Added plugin package under `skunkscrape/plugins/`.
+- Added `skunky` Python package scaffold.
+- Added plugin package under `skunky/plugins/`.
 - Added `manifest.json` for manifest-driven plugin registration.
 - Added `smart_contact_crawler` plugin for public contact discovery.
 - Added root CLI orchestrator in `main.py`.

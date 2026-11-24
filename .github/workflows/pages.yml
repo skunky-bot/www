@@ -36,7 +36,7 @@ jobs:
           [ -d public ] && cp -r public ./_site/public || true
           # Isolated Skunky homepage preview; keep existing CNAME and root homepage intact.
           [ -d skunky ] && cp -r skunky ./_site/skunky || true
-          [ -f skunkscrape_landing_card.html ] && cp skunkscrape_landing_card.html ./_site/ || true
+          [ -f skunky_landing_card.html ] && cp skunky_landing_card.html ./_site/ || true
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

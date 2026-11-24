@@ -1,4 +1,4 @@
-SkunkScrape Release Snapshot
+Skunky Release Snapshot
 Generated: 2026-03-21 06:18:17
 
 [Python]
@@ -26,7 +26,7 @@ A  tests/test_operational_scripts.py
 [OK]   .\pyproject.toml
 [OK]   .\README.md
 [OK]   .\CHANGELOG.md
-[OK]   .\skunkscrape\plugins\manifest.json
+[OK]   .\skunky\plugins\manifest.json
 [OK]   .\scripts
 [OK]   .\tests
 

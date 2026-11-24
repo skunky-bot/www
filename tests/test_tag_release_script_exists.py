@@ -11,7 +11,7 @@ def test_tag_release_script_has_expected_markers():
     content = script.read_text(encoding="utf-8")
 
     expected_terms = [
-        "SkunkScrape Release Tagging",
+        "Skunky Release Tagging",
         "CHANGELOG.md",
         "commit_ready.ps1",
         "git status --porcelain",
