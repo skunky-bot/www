@@ -14,8 +14,8 @@ logging.basicConfig(
 )
 log = logging.getLogger("main")
 
-MANIFEST_PATH = Path("skunkscrape/plugins/manifest.json")
-DEFAULT_PROXY_FILE = r"C:\Users\Raydo\OneDrive\Apps\SkunkScrape\data\proxies\Webshare 10 proxies.txt"
+MANIFEST_PATH = Path("skunky/plugins/manifest.json")
+DEFAULT_PROXY_FILE = r"C:\Users\Raydo\OneDrive\Apps\Skunky\data\proxies\Webshare 10 proxies.txt"
 
 
 def load_manifest():
@@ -45,7 +45,7 @@ def run_plugin(
 ):
     effective_proxy_file = proxy_file or DEFAULT_PROXY_FILE
 
-    cmd = ["python", "-m", f"skunkscrape.plugins.{plugin}"]
+    cmd = ["python", "-m", f"skunky.plugins.{plugin}"]
 
     if url:
         cmd += ["--url", url]
@@ -85,7 +85,7 @@ def main():
     manifest = load_manifest()
     plugins = list_plugins(manifest)
 
-    parser = argparse.ArgumentParser(description="SkunkScrape CLI Orchestrator")
+    parser = argparse.ArgumentParser(description="Skunky CLI Orchestrator")
     parser.add_argument("--plugin", help="Run a specific plugin")
     parser.add_argument("--category", help="Run all plugins in a category")
     parser.add_argument("--all", action="store_true", help="Run all plugins")
@@ -95,7 +95,7 @@ def main():
     parser.add_argument("--target-leads", type=int, help="Target lead count")
     parser.add_argument(
         "--proxy-file",
-        help="Proxy file to pass to plugins. Defaults to the configured SkunkScrape proxy file.",
+        help="Proxy file to pass to plugins. Defaults to the configured Skunky proxy file.",
     )
     parser.add_argument(
         "--max-pages",

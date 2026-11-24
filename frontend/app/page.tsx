@@ -16,18 +16,18 @@ import {
   Workflow,
 } from "lucide-react";
 
-const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? "SkunkScrape Web Console";
-const RAW_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://skunkscrape.com";
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? "Skunky Web Console";
+const RAW_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://skunky.net";
 const SITE_URL = RAW_SITE_URL.startsWith("http") ? RAW_SITE_URL : `https://${RAW_SITE_URL}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "SkunkScrape Web Console | Queue, monitor, and operationalise scraping",
+  title: "Skunky Web Console | Queue, monitor, and operationalise scraping",
   description:
-    "Production-grade web console for SkunkScrape. Launch jobs, monitor queues, track pipeline health, inspect results, and operationalise scraping with Next.js, FastAPI, PostgreSQL, and Redis.",
+    "Production-grade web console for Skunky. Launch jobs, monitor queues, track pipeline health, inspect results, and operationalise scraping with Next.js, FastAPI, PostgreSQL, and Redis.",
   applicationName: APP_NAME,
   keywords: [
-    "SkunkScrape",
+    "Skunky",
     "lead scraping",
     "web console",
     "FastAPI",
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "SkunkScrape Web Console",
+    title: "Skunky Web Console",
     description:
       "A modern control plane for scraping operations, lead pipelines, exports, monitoring, and queued execution.",
-    siteName: "SkunkScrape",
+    siteName: "Skunky",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SkunkScrape Web Console",
+    title: "Skunky Web Console",
     description:
       "Launch, queue, monitor, and operationalise scraping jobs from one responsive control plane.",
   },
@@ -110,7 +110,7 @@ export default function HomePage() {
     url: SITE_URL,
     brand: {
       "@type": "Brand",
-      name: "SkunkScrape",
+      name: "Skunky",
     },
     offers: {
       "@type": "Offer",
@@ -171,14 +171,14 @@ export default function HomePage() {
             <Link
               href="/"
               className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur transition hover:border-sky-400/40 hover:bg-white/10"
-              aria-label="SkunkScrape home"
+              aria-label="Skunky home"
             >
               <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-sky-400 to-cyan-300 text-slate-950">
                 <Bot className="h-5 w-5" />
               </span>
               <span className="flex flex-col leading-tight">
                 <span className="text-sm font-semibold tracking-wide text-white">
-                  SkunkScrape
+                  Skunky
                 </span>
                 <span className="text-xs text-slate-400">Web Console</span>
               </span>
@@ -226,7 +226,7 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                This landing page is built as the front door to your SkunkScrape platform:
+                This landing page is built as the front door to your Skunky platform:
                 responsive, animated, metadata-aware, and ready to drive users into job
                 creation, operations visibility, and pipeline execution.
               </p>
@@ -468,7 +468,7 @@ export default function HomePage() {
         <footer className="relative z-10 border-t border-white/10">
           <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-8">
             <div>
-              <p className="font-medium text-slate-200">SkunkScrape Web Console</p>
+              <p className="font-medium text-slate-200">Skunky Web Console</p>
               <p className="mt-1">
                 Responsive landing route for your Next.js frontend, ready to pair with FastAPI,
                 PostgreSQL, Redis, and the rest of the repo.

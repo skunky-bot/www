@@ -12,7 +12,7 @@ function Flag-Blocking($message) {
 }
 
 Write-Host ""
-Write-Host "=== SkunkScrape Commit Readiness Check ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Commit Readiness Check ===" -ForegroundColor Cyan
 
 Write-Section "Tooling"
 if (Get-Command python -ErrorAction SilentlyContinue) {
@@ -32,7 +32,7 @@ $requiredPaths = @(
     ".\main.py",
     ".\pyproject.toml",
     ".\README.md",
-    ".\skunkscrape\plugins\manifest.json",
+    ".\skunky\plugins\manifest.json",
     ".\tests\test_manifest.py",
     ".\tests\test_smart_contact_crawler.py",
     ".\tests\test_main.py"
@@ -89,7 +89,7 @@ if (Test-Path ".\README.md") {
 Write-Section "Tracked Artefact Risk"
 $artefactPaths = @(
     ".\__pycache__",
-    ".\skunkscrape.egg-info",
+    ".\skunky.egg-info",
     ".\.pytest_cache",
     ".\data\logs",
     ".\data\output"

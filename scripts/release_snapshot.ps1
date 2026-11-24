@@ -11,7 +11,7 @@ function Add-Line {
     Add-Content -Path $snapshotFile -Value $Text
 }
 
-Add-Line "SkunkScrape Release Snapshot"
+Add-Line "Skunky Release Snapshot"
 Add-Line "Generated: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 Add-Line ""
 
@@ -68,7 +68,7 @@ $paths = @(
     ".\pyproject.toml",
     ".\README.md",
     ".\CHANGELOG.md",
-    ".\skunkscrape\plugins\manifest.json",
+    ".\skunky\plugins\manifest.json",
     ".\scripts",
     ".\tests"
 )

@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -34,7 +35,9 @@ jobs:
           [ -f favicon.ico ] && cp favicon.ico ./_site/ || true
           [ -d assets ] && cp -r assets ./_site/assets || true
           [ -d public ] && cp -r public ./_site/public || true
-          [ -f skunkscrape_landing_card.html ] && cp skunkscrape_landing_card.html ./_site/ || true
+          # Isolated Skunky homepage preview; keep existing CNAME and root homepage intact.
+          [ -d skunky ] && cp -r skunky ./_site/skunky || true
+          [ -f skunky_landing_card.html ] && cp skunky_landing_card.html ./_site/ || true
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -43,7 +46,35 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
+          name: github-pages-${{ github.run_attempt }}
+          retention-days: 3
+
+      - name: Wait for Pages artifact metadata
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          for attempt in {1..24}; do
+            if count=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" -f name="$ARTIFACT_NAME" --jq '[.artifacts[] | select(.expired == false and .size_in_bytes > 0)] | length'); then
+              if [ "$count" = 1 ]; then
+                echo "Pages artifact is visible: $ARTIFACT_NAME"
+                exit 0
+              fi
+              if [ "$count" -gt 1 ]; then
+                echo "::error::Multiple matching Pages artifacts"
+                exit 1
+              fi
+            fi
+            echo "Waiting for artifact metadata ($attempt/24)"
+            sleep 5
+          done
+          echo "::error::Pages artifact metadata did not become visible within 120 seconds"
+          exit 1
 
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}

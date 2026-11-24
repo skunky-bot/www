@@ -11,7 +11,7 @@ def test_release_snapshot_script_has_expected_markers():
     content = script.read_text(encoding="utf-8")
 
     expected_terms = [
-        "SkunkScrape Release Snapshot",
+        "Skunky Release Snapshot",
         "data\\release_snapshots",
         "python -m pytest",
         "git status --short",

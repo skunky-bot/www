@@ -13,9 +13,9 @@ def queue_job(job_id: int):
         job.status = JobStatus.running
         db.commit()
 
-        # TODO: replace this placeholder with your existing SkunkScrape plugin execution.
+        # TODO: replace this placeholder with your existing Skunky plugin execution.
         # Example:
-        # subprocess.run(["python", "-m", f"skunkscrape.plugins.{job.plugin}", "--url", job.target], check=True)
+        # subprocess.run(["python", "-m", f"skunky.plugins.{job.plugin}", "--url", job.target], check=True)
 
         job.status = JobStatus.completed
         job.result_path = f"/exports/job-{job.id}.csv"

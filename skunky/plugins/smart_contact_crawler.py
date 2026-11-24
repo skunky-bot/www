@@ -28,7 +28,7 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 LOG_FILE = LOG_DIR / "smart_contact_crawler.log"
 DEFAULT_USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 SkunkScrape/2.2"
+    "(KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Skunky/2.2"
 )
 DEFAULT_TIMEOUT = 20
 DEFAULT_MAX_PAGES = 50
@@ -97,7 +97,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--to-webhook",
         action="store_true",
-        help="POST the JSON payload to the URL in SKUNKSCRAPE_WEBHOOK_URL.",
+        help="POST the JSON payload to the URL in SKUNKY_WEBHOOK_URL.",
     )
     parser.add_argument(
         "--target-leads",
@@ -573,9 +573,9 @@ def write_outputs(seed_url: str, payload: dict) -> tuple[Path, Path]:
 
 
 def post_to_webhook(payload: dict) -> bool:
-    webhook_url = os.getenv("SKUNKSCRAPE_WEBHOOK_URL", "").strip()
+    webhook_url = os.getenv("SKUNKY_WEBHOOK_URL", "").strip()
     if not webhook_url:
-        log.warning("--to-webhook was used but SKUNKSCRAPE_WEBHOOK_URL is not set.")
+        log.warning("--to-webhook was used but SKUNKY_WEBHOOK_URL is not set.")
         return False
 
     try:
@@ -617,7 +617,7 @@ def main() -> int:
     json_path, csv_path = write_outputs(seed_url, payload)
 
     summary = payload["summary"]
-    print("\n=== SkunkScrape Smart Contact Crawler Summary ===")
+    print("\n=== Skunky Smart Contact Crawler Summary ===")
     print(f"Seed URL:          {summary['seed_url']}")
     print(f"Pages crawled:     {summary['pages_crawled']}")
     print(f"Records found:     {summary['records_found']}")

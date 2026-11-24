@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "=== SkunkScrape Dev Bootstrap ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Dev Bootstrap ===" -ForegroundColor Cyan
 
 Write-Host ""
 Write-Host "[1/6] Checking tooling..." -ForegroundColor Yellow

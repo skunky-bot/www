@@ -1,6 +1,6 @@
-# Skunky platform · SkunkScrape public application
+# Skunky platform · Skunky public application
 
-This repository is the **public application** entrypoint of the [Skunky platform organization](https://github.com/skunky-bot). SkunkScrape remains the existing lead discovery product; Skunky is the umbrella service architecture.
+This repository is the **public application** entrypoint of the [Skunky platform organization](https://github.com/skunky-bot). Skunky unifies the public application, lead discovery, collection tools and service architecture under one name.
 
 **Canonical architecture:** [ADR-0001](docs/architecture/ADR-0001-skunky-platform.md) · **Integration test:** [.github/workflows/skunky-integration.yml](.github/workflows/skunky-integration.yml).
 
@@ -10,7 +10,7 @@ The legacy `backend/` FastAPI/Celery/Redis/PostgreSQL stack is preserved for a c
 
 ## Web Collector
 
-Open `/collector` in the Next.js console and sign in with a SkunkScrape operator account. Enter keywords, a source limit, and the country code used to interpret local phone numbers. **One-time scan** runs once. **Continuous** runs immediately and repeats at the selected interval. Pausing retains existing contacts and resuming schedules an immediate scan. Contacts are deduplicated per collection and include the URL where they were first seen.
+Open `/collector` in the Next.js console and sign in with a Skunky operator account. Enter keywords, a source limit, and the country code used to interpret local phone numbers. **One-time scan** runs once. **Continuous** runs immediately and repeats at the selected interval. Pausing retains existing contacts and resuming schedules an immediate scan. Contacts are deduplicated per collection and include the URL where they were first seen.
 
 For a local run, check out `skunky-bot/www`, `skunky-bot/api`, `skunky-bot/search`, `skunky-bot/scan` and `skunky-bot/collect` into sibling directories. Set `SKUNKY_JWT_SECRET`, `SKUNKY_ADMIN_USERNAME`, `SKUNKY_ADMIN_PASSWORD`, `SKUNKY_ADMIN_EMAIL` and `SKUNKY_SERVICE_TOKEN` in your local environment. Point `SKUNKY_SOURCE_REGISTRY_FILE` at an absolute path to a reviewed registry. The [API documentation](https://github.com/skunky-bot/api#web-collector) shows the source entry format.
 
@@ -28,15 +28,15 @@ Open `http://localhost:3000/collector`. The API and one worker share the SQLite 
 
 ---
 
-# SkunkScrape
+# Skunky
 
-SkunkScrape is a non-Firebase web console and plugin-driven scraping toolkit for Skunkworks.
+Skunky is a non-Firebase web console and plugin-driven scraping toolkit for Skunkworks.
 It combines a production-lean web platform direction with modular scraping, contact discovery,
 and future SaaS automation workflows.
 
 ## Platform Scope
 
-SkunkScrape currently covers two aligned tracks:
+Skunky currently covers two aligned tracks:
 
 - **Web Console**: a production-lean non-Firebase platform direction for dashboard, orchestration, and operator workflows
 - **Scraping Toolkit**: a plugin-based Python architecture for crawling, contact discovery, exports, and automation
@@ -44,8 +44,8 @@ SkunkScrape currently covers two aligned tracks:
 ## Current Implemented Components
 
 - Root CLI orchestrator: `main.py`
-- Plugin package: `skunkscrape.plugins`
-- Plugin manifest: `skunkscrape/plugins/manifest.json`
+- Plugin package: `skunky.plugins`
+- Plugin manifest: `skunky/plugins/manifest.json`
 - Working crawler: `smart_contact_crawler`
 - Test suite under `tests/`
 - Structured logs under `data/logs/`
@@ -54,7 +54,7 @@ SkunkScrape currently covers two aligned tracks:
 ## Project Structure
 
 ```ASCII
-SKUNKSCRAPE/
+SKUNKY/
 |-- backend/
 |   `-- app/
 |       `-- main.py
@@ -62,7 +62,7 @@ SKUNKSCRAPE/
 |   |-- logs/
 |   `-- output/
 |       `-- smart_contact_crawler/
-|-- skunkscrape/
+|-- skunky/
 |   |-- __init__.py
 |   `-- plugins/
 |       |-- __init__.py

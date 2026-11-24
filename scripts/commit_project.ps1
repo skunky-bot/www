@@ -8,7 +8,7 @@ param(
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "=== SkunkScrape Commit Project ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Commit Project ===" -ForegroundColor Cyan
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     Write-Error "Git is not available on PATH."
@@ -33,7 +33,7 @@ $pathsToStage = @(
     ".\pyproject.toml",
     ".\README.md",
     ".\.gitignore",
-    ".\skunkscrape",
+    ".\skunky",
     ".\tests",
     ".\scripts"
 )

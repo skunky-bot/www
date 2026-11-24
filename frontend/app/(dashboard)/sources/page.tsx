@@ -61,14 +61,14 @@ type SourceRecord = {
 export const metadata: Metadata = {
   title: "Sources",
   description:
-    "Source registry for SkunkScrape, including target health, category, host visibility, linked jobs, and operational status.",
+    "Source registry for Skunky, including target health, category, host visibility, linked jobs, and operational status.",
 };
 
 const APP_NAME =
-  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunkscrape.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunky.net";
 
 const PLATFORM_STATUS =
   process.env.NEXT_PUBLIC_PLATFORM_STATUS?.trim() || "Operational";
