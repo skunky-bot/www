@@ -26,7 +26,7 @@ def test_main_project_files_exist():
         "main.py",
         "pyproject.toml",
         "README.md",
-        "skunkscrape/plugins/manifest.json",
+        "skunky/plugins/manifest.json",
     ]
 
     missing = [path for path in expected if not Path(path).exists()]

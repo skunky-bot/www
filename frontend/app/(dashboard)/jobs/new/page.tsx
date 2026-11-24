@@ -78,10 +78,10 @@ type FormState = {
 };
 
 const APP_NAME =
-  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunkscrape.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunky.net";
 
 const APP_ENV =
   process.env.NEXT_PUBLIC_APP_ENV?.trim() ||
@@ -1197,7 +1197,7 @@ export default function NewJobPage() {
                     <input
                       id="webhook-url"
                       className="input"
-                      placeholder="https://hooks.example.com/skunkscrape"
+                      placeholder="https://hooks.example.com/skunky"
                       value={state.webhookUrl}
                       onChange={(event) => onFieldChange("webhookUrl", event.target.value)}
                     />

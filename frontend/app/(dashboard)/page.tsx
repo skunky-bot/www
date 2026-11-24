@@ -53,13 +53,13 @@ type JobRecord = {
 export const metadata: Metadata = {
   title: "Jobs",
   description:
-    "Operational jobs console for queued SkunkScrape runs, progress tracking, filtering, and execution visibility.",
+    "Operational jobs console for queued Skunky runs, progress tracking, filtering, and execution visibility.",
 };
 
 const APP_NAME =
-  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "SkunkScrape Web Console";
+  process.env.NEXT_PUBLIC_APP_NAME?.trim() || "Skunky Web Console";
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunkscrape.com";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://skunky.net";
 const PLATFORM_STATUS =
   process.env.NEXT_PUBLIC_PLATFORM_STATUS?.trim() || "Operational";
 const DEFAULT_ENV =

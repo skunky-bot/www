@@ -113,7 +113,7 @@ function SignIn({ onSignIn }: { onSignIn: (session: Session) => void }) {
   return (
     <form onSubmit={signIn} className="surface-card max-w-lg space-y-4 p-5 sm:p-6">
       <div>
-        <h2 className="text-lg font-semibold text-white">Sign in to SkunkScrape</h2>
+        <h2 className="text-lg font-semibold text-white">Sign in to Skunky</h2>
         <p className="mt-1 text-sm text-slate-300">Use your operator account to manage collections.</p>
       </div>
       <label className="block text-sm font-medium">Username

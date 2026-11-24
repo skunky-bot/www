@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host ""
-Write-Host "=== SkunkScrape Test Runner ===" -ForegroundColor Cyan
+Write-Host "=== Skunky Test Runner ===" -ForegroundColor Cyan
 
 if (-not (Get-Command python -ErrorAction SilentlyContinue)) {
     Write-Error "Python is not available on PATH."

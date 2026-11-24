@@ -1,5 +1,5 @@
 {
-  "name": "skunkscrape-web-console",
+  "name": "skunky-web-console",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
